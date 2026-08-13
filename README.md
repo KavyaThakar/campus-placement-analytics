@@ -1,3 +1,14 @@
+---
+title: Campus Placement Data Analytics
+emoji: 🎓
+colorFrom: blue
+colorTo: indigo
+sdk: streamlit
+sdk_version: "1.32.0"
+app_file: app.py
+pinned: false
+---
+
 # Campus Placement Analytics & Predictive Driver Analysis
 
 [![Python 3.8+](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
