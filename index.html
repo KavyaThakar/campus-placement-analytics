@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Placement Analytics Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bs-primary: #1e3a8a;
+            --bs-secondary: #0284c7;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        .navbar-brand {
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .stat-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.2s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-2px);
+        }
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        .chart-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 1.25rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+            margin-bottom: 1.5rem;
+        }
+        .chart-img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .badge-custom {
+            font-size: 0.85rem;
+            padding: 0.35em 0.65em;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                <i class="fa-solid fa-graduation-cap text-info fs-3"></i>
+                <span>Campus Placement Analytics</span>
+            </a>
+            <span class="navbar-text text-light opacity-75 d-none d-md-inline">
+                Data Science Portfolio Project | 215 Student Records
+            </span>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container py-4">
+        
+        <!-- Hero Section -->
+        <div class="p-4 mb-4 bg-white rounded-3 border shadow-sm">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="display-6 fw-bold text-dark mb-2">Campus Recruitment Drivers & Analysis</h1>
+                    <p class="lead text-muted mb-3">
+                        An end-to-end analytical study uncovering key factors influencing MBA placement rates, salary packages, work experience leverage, and academic score impacts using SQLite and Python analytics.
+                    </p>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge bg-primary badge-custom"><i class="fa-brands fa-python me-1"></i> Python 3.10</span>
+                        <span class="badge bg-secondary badge-custom"><i class="fa-solid fa-database me-1"></i> SQLite3</span>
+                        <span class="badge bg-success badge-custom"><i class="fa-solid fa-chart-line me-1"></i> Visual Analytics</span>
+                        <span class="badge bg-dark badge-custom"><i class="fa-brands fa-github me-1"></i> GitHub Repository</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center mt-3 mt-lg-0">
+                    <a href="https://github.com/KavyaThakar/campus-placement-analytics" target="_blank" class="btn btn-outline-dark btn-lg w-100">
+                        <i class="fa-brands fa-github me-2"></i> View Source Code
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- KPI Metrics Grid -->
+        <div class="row g-3 mb-4">
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <div class="stat-icon bg-primary bg-opacity-10 text-primary">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div class="text-muted small fw-semibold">TOTAL CANDIDATES</div>
+                    <div class="fs-2 fw-bold text-dark">215</div>
+                    <div class="small text-muted">148 Placed | 67 Unplaced</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <div class="stat-icon bg-success bg-opacity-10 text-success">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </div>
+                    <div class="text-muted small fw-semibold">PLACEMENT RATE</div>
+                    <div class="fs-2 fw-bold text-success">68.84%</div>
+                    <div class="small text-muted">Overall Campus Average</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <div class="stat-icon bg-info bg-opacity-10 text-info">
+                        <i class="fa-solid fa-indian-rupee-sign"></i>
+                    </div>
+                    <div class="text-muted small fw-semibold">AVG SALARY OFFER</div>
+                    <div class="fs-2 fw-bold text-info">₹2.91L</div>
+                    <div class="small text-muted">₹2,91,015 INR / year</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <div class="stat-icon bg-warning bg-opacity-10 text-warning">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <div class="text-muted small fw-semibold">HIGHEST OFFER</div>
+                    <div class="fs-2 fw-bold text-warning">₹9.40L</div>
+                    <div class="small text-muted">Mkt&Fin | Workex Yes</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Visualizations Grid -->
+        <h3 class="fw-bold text-dark mb-3"><i class="fa-solid fa-chart-simple text-primary me-2"></i> Visual Analytics Overview</h3>
+        
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="chart-card">
+                    <h5 class="fw-bold mb-3">Key Academic Stage Scores (Placed vs Unplaced)</h5>
+                    <img src="charts/academic_scores_placed_vs_unplaced.png" alt="Academic Score Comparison" class="chart-img shadow-sm">
+                    <p class="text-muted small mt-2">
+                        <strong>Insight:</strong> 10th (`ssc_p`) and 12th (`hsc_p`) scores show a massive +14.2% and +11.5% gap between placed vs unplaced candidates, whereas MBA score (`mba_p`) shows only a +1.0% difference.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="chart-card">
+                    <h5 class="fw-bold mb-3">Placement Rate by Prior Work Experience</h5>
+                    <img src="charts/placement_rate_by_workex.png" alt="Placement Rate by Work Experience" class="chart-img shadow-sm">
+                    <p class="text-muted small mt-2">
+                        <strong>Insight:</strong> Prior work experience boosts placement rates from 59.57% to 86.49% (+26.9 percentage points higher probability).
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="chart-card">
+                    <h5 class="fw-bold mb-3">Placement Rate by MBA Specialisation</h5>
+                    <img src="charts/placement_rate_by_specialisation.png" alt="Placement Rate by Specialisation" class="chart-img shadow-sm">
+                    <p class="text-muted small mt-2">
+                        <strong>Insight:</strong> Marketing & Finance candidates achieved a 79.17% placement rate vs 55.79% for Marketing & HR (+23.4% placement rate advantage).
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="chart-card">
+                    <h5 class="fw-bold mb-3">Salary Offer Distribution (Placed Students)</h5>
+                    <img src="charts/salary_distribution_placed.png" alt="Salary Offer Distribution" class="chart-img shadow-sm">
+                    <p class="text-muted small mt-2">
+                        <strong>Insight:</strong> Salary offers cluster between ₹2.0L and ₹3.0L, with a right-skewed tail reaching ₹9.4L for top candidates.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="chart-card">
+                    <h5 class="fw-bold mb-3">Average Salary Offer by Specialisation & Gender</h5>
+                    <img src="charts/avg_salary_by_spec_gender.png" alt="Average Salary Offer by Specialisation & Gender" class="chart-img shadow-sm">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="chart-card">
+                    <h5 class="fw-bold mb-3">Academic Score Correlation Heatmap</h5>
+                    <img src="charts/academic_correlation_heatmap.png" alt="Academic Correlation Heatmap" class="chart-img shadow-sm">
+                </div>
+            </div>
+        </div>
+
+        <!-- Executive Summary Findings -->
+        <div class="card border-0 bg-primary text-white p-4 my-4 shadow-sm rounded-3">
+            <h4 class="fw-bold"><i class="fa-solid fa-lightbulb text-warning me-2"></i> Top 3 Recruitment Key Findings</h4>
+            <ul class="mb-0 fs-6 mt-2 lh-lg">
+                <li><strong>Work Experience is Paramount:</strong> Having prior work experience increases recruitment odds by +26.9 percentage points (86.5% vs 59.6%).</li>
+                <li><strong>Consistent High School Performance Trumps MBA Scores:</strong> Recruiters prioritize candidates with strong secondary education history over MBA GPA alone.</li>
+                <li><strong>Specialisation Premium:</strong> Marketing & Finance delivers higher placement rates (79.2% vs 55.8%) and higher average packages (₹2.98L vs ₹2.70L).</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <footer class="bg-dark text-light py-3 mt-5 text-center">
+        <div class="container small opacity-75">
+            Campus Placement Analytics Project | Built by Kavya Thakar | Hosted on GitHub & Hugging Face
+        </div>
+    </footer>
+
+</body>
+</html>
