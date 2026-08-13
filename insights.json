@@ -1,0 +1,429 @@
+{
+    "Query 1: Overall Placement Overview": {
+        "sql": "SELECT \n    COUNT(*) AS total_students,\n    SUM(Placed_Flag) AS total_placed,\n    COUNT(*) - SUM(Placed_Flag) AS total_unplaced,\n    ROUND(AVG(Placed_Flag) * 100, 2) AS placement_rate_pct\nFROM students;",
+        "row_count": 1,
+        "data": [
+            {
+                "total_students": 215,
+                "total_placed": 148,
+                "total_unplaced": 67,
+                "placement_rate_pct": 68.84
+            }
+        ]
+    },
+    "Query 2: Placement Rate by Degree Stream": {
+        "sql": "SELECT \n    degree_t,\n    COUNT(*) AS total_students,\n    SUM(Placed_Flag) AS placed_students,\n    ROUND(AVG(Placed_Flag) * 100, 2) AS placement_rate_pct\nFROM students\nGROUP BY degree_t\nORDER BY placement_rate_pct DESC;",
+        "row_count": 3,
+        "data": [
+            {
+                "degree_t": "Comm&Mgmt",
+                "total_students": 145,
+                "placed_students": 102,
+                "placement_rate_pct": 70.34
+            },
+            {
+                "degree_t": "Sci&Tech",
+                "total_students": 59,
+                "placed_students": 41,
+                "placement_rate_pct": 69.49
+            },
+            {
+                "degree_t": "Others",
+                "total_students": 11,
+                "placed_students": 5,
+                "placement_rate_pct": 45.45
+            }
+        ]
+    },
+    "Query 3: Placement Rate by Specialisation": {
+        "sql": "SELECT \n    specialisation,\n    COUNT(*) AS total_students,\n    SUM(Placed_Flag) AS placed_students,\n    ROUND(AVG(Placed_Flag) * 100, 2) AS placement_rate_pct\nFROM students\nGROUP BY specialisation\nORDER BY placement_rate_pct DESC;",
+        "row_count": 2,
+        "data": [
+            {
+                "specialisation": "Mkt&Fin",
+                "total_students": 120,
+                "placed_students": 95,
+                "placement_rate_pct": 79.17
+            },
+            {
+                "specialisation": "Mkt&HR",
+                "total_students": 95,
+                "placed_students": 53,
+                "placement_rate_pct": 55.79
+            }
+        ]
+    },
+    "Query 4: Salary Statistics by Specialisation (Placed Only)": {
+        "sql": "SELECT \n    specialisation,\n    COUNT(*) AS placed_count,\n    ROUND(AVG(salary), 2) AS avg_salary,\n    MIN(salary) AS min_salary,\n    MAX(salary) AS max_salary\nFROM students\nWHERE status = 'Placed'\nGROUP BY specialisation\nORDER BY avg_salary DESC;",
+        "row_count": 2,
+        "data": [
+            {
+                "specialisation": "Mkt&Fin",
+                "placed_count": 95,
+                "avg_salary": 298852.63,
+                "min_salary": 200000.0,
+                "max_salary": 940000.0
+            },
+            {
+                "specialisation": "Mkt&HR",
+                "placed_count": 53,
+                "avg_salary": 270377.36,
+                "min_salary": 200000.0,
+                "max_salary": 450000.0
+            }
+        ]
+    },
+    "Query 5: Window Function - Rank Students by MBA Percentage within Specialisation": {
+        "sql": "SELECT \n    student_id,\n    gender,\n    specialisation,\n    mba_p,\n    status,\n    salary,\n    RANK() OVER (PARTITION BY specialisation ORDER BY mba_p DESC) AS rank_within_spec\nFROM students\nORDER BY specialisation, rank_within_spec\nLIMIT 15;",
+        "row_count": 15,
+        "data": [
+            {
+                "student_id": 20,
+                "gender": "M",
+                "specialisation": "Mkt&Fin",
+                "mba_p": 77.89,
+                "status": "Placed",
+                "salary": 236000.0,
+                "rank_within_spec": 1
+            },
+            {
+                "student_id": 86,
+                "gender": "F",
+                "specialisation": "Mkt&Fin",
+                "mba_p": 76.18,
+                "status": "Placed",
+                "salary": 400000.0,
+                "rank_within_spec": 2
+            },
+            {
+                "student_id": 168,
+                "gender": "M",
+                "specialisation": "Mkt&Fin",
+                "mba_p": 75.71,
+                "status": "Not Placed",
+                "salary": NaN,
+                "rank_within_spec": 3
+            },
+            {
+                "student_id": 166,
+                "gender": "F",
+                "specialisation": "Mkt&Fin",
+                "mba_p": 74.56,
+                "status": "Not Placed",
+                "salary": NaN,
+                "rank_within_spec": 4
+            },
+            {
+                "student_id": 211,
+                "gender": "M",
+                "specialisation": "Mkt&Fin",
+                "mba_p": 74.49,
+                "status": "Placed",
+                "salary": 400000.0,
+                "rank_within_spec": 5
+            },
+            {
+                "student_id": 25,
+                "gender": "M",
+                "specialisation": "Mkt&Fin",
+                "mba_p": 74.01,
+                "status": "Placed",
+                "salary": 360000.0,
+                "rank_within_spec": 6
+            },
+            {
+                "student_id": 126,
+                "gender": "F",
+                "specialisation": "Mkt&Fin",
+                "mba_p": 73.33,
+                "status": "Placed",
+                "salary": 350000.0,
+                "rank_within_spec": 7
+            },
+            {
+                "student_id": 34,
+                "gender": "F",
+                "specialisation": "Mkt&Fin",
+                "mba_p": 72.78,
+                "status": "Placed",
+                "salary": 260000.0,
+                "rank_within_spec": 8
+            },
+            {
+                "student_id": 139,
+                "gender": "F",
+                "specialisation": "Mkt&Fin",
+                "mba_p": 71.77,
+                "status": "Placed",
+                "salary": 250000.0,
+                "rank_within_spec": 9
+            },
+            {
+                "student_id": 208,
+                "gender": "M",
+                "specialisation": "Mkt&Fin",
+                "mba_p": 71.55,
+                "status": "Placed",
+                "salary": 300000.0,
+                "rank_within_spec": 10
+            },
+            {
+                "student_id": 123,
+                "gender": "F",
+                "specialisation": "Mkt&Fin",
+                "mba_p": 71.0,
+                "status": "Placed",
+                "salary": 236000.0,
+                "rank_within_spec": 11
+            },
+            {
+                "student_id": 117,
+                "gender": "M",
+                "specialisation": "Mkt&Fin",
+                "mba_p": 70.85,
+                "status": "Placed",
+                "salary": 300000.0,
+                "rank_within_spec": 12
+            },
+            {
+                "student_id": 178,
+                "gender": "F",
+                "specialisation": "Mkt&Fin",
+                "mba_p": 70.81,
+                "status": "Placed",
+                "salary": 650000.0,
+                "rank_within_spec": 13
+            },
+            {
+                "student_id": 82,
+                "gender": "M",
+                "specialisation": "Mkt&Fin",
+                "mba_p": 70.2,
+                "status": "Placed",
+                "salary": 300000.0,
+                "rank_within_spec": 14
+            },
+            {
+                "student_id": 213,
+                "gender": "M",
+                "specialisation": "Mkt&Fin",
+                "mba_p": 69.72,
+                "status": "Placed",
+                "salary": 295000.0,
+                "rank_within_spec": 15
+            }
+        ]
+    },
+    "Query 6: CTE - Academic Scores Comparison (Placed vs Unplaced)": {
+        "sql": "WITH AcademicAverages AS (\n    SELECT \n        status,\n        COUNT(*) AS student_count,\n        ROUND(AVG(ssc_p), 2) AS avg_ssc_p,\n        ROUND(AVG(hsc_p), 2) AS avg_hsc_p,\n        ROUND(AVG(degree_p), 2) AS avg_degree_p,\n        ROUND(AVG(mba_p), 2) AS avg_mba_p,\n        ROUND(AVG(etest_p), 2) AS avg_etest_p\n    FROM students\n    GROUP BY status\n)\nSELECT \n    status,\n    student_count,\n    avg_ssc_p,\n    avg_hsc_p,\n    avg_degree_p,\n    avg_mba_p,\n    avg_etest_p\nFROM AcademicAverages;",
+        "row_count": 2,
+        "data": [
+            {
+                "status": "Not Placed",
+                "student_count": 67,
+                "avg_ssc_p": 57.54,
+                "avg_hsc_p": 58.4,
+                "avg_degree_p": 61.13,
+                "avg_mba_p": 61.61,
+                "avg_etest_p": 69.59
+            },
+            {
+                "status": "Placed",
+                "student_count": 148,
+                "avg_ssc_p": 71.72,
+                "avg_hsc_p": 69.93,
+                "avg_degree_p": 68.74,
+                "avg_mba_p": 62.58,
+                "avg_etest_p": 73.24
+            }
+        ]
+    },
+    "Query 7: Placement Rate by Work Experience": {
+        "sql": "SELECT \n    workex,\n    COUNT(*) AS total_students,\n    SUM(Placed_Flag) AS placed_students,\n    ROUND(AVG(Placed_Flag) * 100, 2) AS placement_rate_pct\nFROM students\nGROUP BY workex\nORDER BY placement_rate_pct DESC;",
+        "row_count": 2,
+        "data": [
+            {
+                "workex": "Yes",
+                "total_students": 74,
+                "placed_students": 64,
+                "placement_rate_pct": 86.49
+            },
+            {
+                "workex": "No",
+                "total_students": 141,
+                "placed_students": 84,
+                "placement_rate_pct": 59.57
+            }
+        ]
+    },
+    "Query 8: Top 10 Salary Offers and Student Profiles": {
+        "sql": "SELECT \n    student_id,\n    gender,\n    specialisation,\n    workex,\n    degree_t,\n    ssc_p,\n    hsc_p,\n    degree_p,\n    mba_p,\n    salary\nFROM students\nWHERE status = 'Placed'\nORDER BY salary DESC\nLIMIT 10;",
+        "row_count": 10,
+        "data": [
+            {
+                "student_id": 120,
+                "gender": "M",
+                "specialisation": "Mkt&Fin",
+                "workex": "Yes",
+                "degree_t": "Comm&Mgmt",
+                "ssc_p": 60.8,
+                "hsc_p": 68.4,
+                "degree_p": 64.6,
+                "mba_p": 64.34,
+                "salary": 940000.0
+            },
+            {
+                "student_id": 151,
+                "gender": "M",
+                "specialisation": "Mkt&Fin",
+                "workex": "Yes",
+                "degree_t": "Sci&Tech",
+                "ssc_p": 71.0,
+                "hsc_p": 58.66,
+                "degree_p": 58.0,
+                "mba_p": 61.3,
+                "salary": 690000.0
+            },
+            {
+                "student_id": 178,
+                "gender": "F",
+                "specialisation": "Mkt&Fin",
+                "workex": "Yes",
+                "degree_t": "Comm&Mgmt",
+                "ssc_p": 73.0,
+                "hsc_p": 97.0,
+                "degree_p": 79.0,
+                "mba_p": 70.81,
+                "salary": 650000.0
+            },
+            {
+                "student_id": 78,
+                "gender": "M",
+                "specialisation": "Mkt&Fin",
+                "workex": "Yes",
+                "degree_t": "Sci&Tech",
+                "ssc_p": 64.0,
+                "hsc_p": 80.0,
+                "degree_p": 65.0,
+                "mba_p": 57.65,
+                "salary": 500000.0
+            },
+            {
+                "student_id": 164,
+                "gender": "M",
+                "specialisation": "Mkt&Fin",
+                "workex": "No",
+                "degree_t": "Sci&Tech",
+                "ssc_p": 63.0,
+                "hsc_p": 67.0,
+                "degree_p": 64.0,
+                "mba_p": 66.46,
+                "salary": 500000.0
+            },
+            {
+                "student_id": 175,
+                "gender": "M",
+                "specialisation": "Mkt&Fin",
+                "workex": "Yes",
+                "degree_t": "Sci&Tech",
+                "ssc_p": 73.24,
+                "hsc_p": 50.83,
+                "degree_p": 64.27,
+                "mba_p": 66.23,
+                "salary": 500000.0
+            },
+            {
+                "student_id": 54,
+                "gender": "M",
+                "specialisation": "Mkt&HR",
+                "workex": "No",
+                "degree_t": "Sci&Tech",
+                "ssc_p": 80.0,
+                "hsc_p": 70.0,
+                "degree_p": 72.0,
+                "mba_p": 71.04,
+                "salary": 450000.0
+            },
+            {
+                "student_id": 5,
+                "gender": "M",
+                "specialisation": "Mkt&Fin",
+                "workex": "No",
+                "degree_t": "Comm&Mgmt",
+                "ssc_p": 85.8,
+                "hsc_p": 73.6,
+                "degree_p": 73.3,
+                "mba_p": 55.5,
+                "salary": 425000.0
+            },
+            {
+                "student_id": 96,
+                "gender": "M",
+                "specialisation": "Mkt&Fin",
+                "workex": "Yes",
+                "degree_t": "Comm&Mgmt",
+                "ssc_p": 73.0,
+                "hsc_p": 78.0,
+                "degree_p": 65.0,
+                "mba_p": 62.16,
+                "salary": 420000.0
+            },
+            {
+                "student_id": 40,
+                "gender": "M",
+                "specialisation": "Mkt&Fin",
+                "workex": "No",
+                "degree_t": "Sci&Tech",
+                "ssc_p": 81.0,
+                "hsc_p": 68.0,
+                "degree_p": 64.0,
+                "mba_p": 62.56,
+                "salary": 411000.0
+            }
+        ]
+    },
+    "Query 9: Placement Rate by High School Stream": {
+        "sql": "SELECT \n    hsc_s AS high_school_stream,\n    COUNT(*) AS total_students,\n    SUM(Placed_Flag) AS placed_students,\n    ROUND(AVG(Placed_Flag) * 100, 2) AS placement_rate_pct\nFROM students\nGROUP BY hsc_s\nORDER BY placement_rate_pct DESC;",
+        "row_count": 3,
+        "data": [
+            {
+                "high_school_stream": "Commerce",
+                "total_students": 113,
+                "placed_students": 79,
+                "placement_rate_pct": 69.91
+            },
+            {
+                "high_school_stream": "Science",
+                "total_students": 91,
+                "placed_students": 63,
+                "placement_rate_pct": 69.23
+            },
+            {
+                "high_school_stream": "Arts",
+                "total_students": 11,
+                "placed_students": 6,
+                "placement_rate_pct": 54.55
+            }
+        ]
+    },
+    "Query 10: Salary Metrics by Gender (Placed Only)": {
+        "sql": "SELECT \n    gender,\n    COUNT(*) AS placed_count,\n    ROUND(AVG(salary), 2) AS avg_salary,\n    MIN(salary) AS min_salary,\n    MAX(salary) AS max_salary\nFROM students\nWHERE status = 'Placed'\nGROUP BY gender;",
+        "row_count": 2,
+        "data": [
+            {
+                "gender": "F",
+                "placed_count": 48,
+                "avg_salary": 267291.67,
+                "min_salary": 200000.0,
+                "max_salary": 650000.0
+            },
+            {
+                "gender": "M",
+                "placed_count": 100,
+                "avg_salary": 298910.0,
+                "min_salary": 200000.0,
+                "max_salary": 940000.0
+            }
+        ]
+    }
+}
