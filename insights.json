@@ -1,384 +1,784 @@
 {
-    "Query 1: Overall Placement Overview": {
+    "Query 1: Overall Placement Overview across All Degree Programs": {
         "sql": "SELECT \n    COUNT(*) AS total_students,\n    SUM(Placed_Flag) AS total_placed,\n    COUNT(*) - SUM(Placed_Flag) AS total_unplaced,\n    ROUND(AVG(Placed_Flag) * 100, 2) AS placement_rate_pct\nFROM students;",
         "row_count": 1,
         "data": [
             {
-                "total_students": 215,
-                "total_placed": 148,
-                "total_unplaced": 67,
-                "placement_rate_pct": 68.84
+                "total_students": 475,
+                "total_placed": 167,
+                "total_unplaced": 308,
+                "placement_rate_pct": 35.16
             }
         ]
     },
-    "Query 2: Placement Rate by Degree Stream": {
-        "sql": "SELECT \n    degree_t,\n    COUNT(*) AS total_students,\n    SUM(Placed_Flag) AS placed_students,\n    ROUND(AVG(Placed_Flag) * 100, 2) AS placement_rate_pct\nFROM students\nGROUP BY degree_t\nORDER BY placement_rate_pct DESC;",
-        "row_count": 3,
+    "Query 2: Placement Rate by Degree Field (B.Tech, M.Tech, MCA, BCA, Pharmacy, MBA, etc.)": {
+        "sql": "SELECT \n    degree_t AS degree_field,\n    COUNT(*) AS total_students,\n    SUM(Placed_Flag) AS placed_students,\n    ROUND(AVG(Placed_Flag) * 100, 2) AS placement_rate_pct\nFROM students\nGROUP BY degree_t\nORDER BY placement_rate_pct DESC;",
+        "row_count": 9,
         "data": [
             {
-                "degree_t": "Comm&Mgmt",
-                "total_students": 145,
-                "placed_students": 102,
-                "placement_rate_pct": 70.34
-            },
-            {
-                "degree_t": "Sci&Tech",
-                "total_students": 59,
-                "placed_students": 41,
-                "placement_rate_pct": 69.49
-            },
-            {
-                "degree_t": "Others",
-                "total_students": 11,
-                "placed_students": 5,
-                "placement_rate_pct": 45.45
-            }
-        ]
-    },
-    "Query 3: Placement Rate by Specialisation": {
-        "sql": "SELECT \n    specialisation,\n    COUNT(*) AS total_students,\n    SUM(Placed_Flag) AS placed_students,\n    ROUND(AVG(Placed_Flag) * 100, 2) AS placement_rate_pct\nFROM students\nGROUP BY specialisation\nORDER BY placement_rate_pct DESC;",
-        "row_count": 2,
-        "data": [
-            {
-                "specialisation": "Mkt&Fin",
+                "degree_field": "B.Tech",
                 "total_students": 120,
-                "placed_students": 95,
-                "placement_rate_pct": 79.17
+                "placed_students": 53,
+                "placement_rate_pct": 44.17
             },
             {
-                "specialisation": "Mkt&HR",
-                "total_students": 95,
-                "placed_students": 53,
-                "placement_rate_pct": 55.79
+                "degree_field": "MCA",
+                "total_students": 50,
+                "placed_students": 21,
+                "placement_rate_pct": 42.0
+            },
+            {
+                "degree_field": "M.Pharm",
+                "total_students": 30,
+                "placed_students": 12,
+                "placement_rate_pct": 40.0
+            },
+            {
+                "degree_field": "MBA",
+                "total_students": 85,
+                "placed_students": 29,
+                "placement_rate_pct": 34.12
+            },
+            {
+                "degree_field": "BBA",
+                "total_students": 30,
+                "placed_students": 10,
+                "placement_rate_pct": 33.33
+            },
+            {
+                "degree_field": "BCA",
+                "total_students": 50,
+                "placed_students": 16,
+                "placement_rate_pct": 32.0
+            },
+            {
+                "degree_field": "M.Tech",
+                "total_students": 45,
+                "placed_students": 12,
+                "placement_rate_pct": 26.67
+            },
+            {
+                "degree_field": "B.Pharm",
+                "total_students": 40,
+                "placed_students": 9,
+                "placement_rate_pct": 22.5
+            },
+            {
+                "degree_field": "B.Sc",
+                "total_students": 25,
+                "placed_students": 5,
+                "placement_rate_pct": 20.0
+            }
+        ]
+    },
+    "Query 3: Placement Rate by Specialisation / Branch": {
+        "sql": "SELECT \n    specialisation,\n    COUNT(*) AS total_students,\n    SUM(Placed_Flag) AS placed_students,\n    ROUND(AVG(Placed_Flag) * 100, 2) AS placement_rate_pct\nFROM students\nGROUP BY specialisation\nORDER BY placement_rate_pct DESC;",
+        "row_count": 25,
+        "data": [
+            {
+                "specialisation": "Pharmacology",
+                "total_students": 4,
+                "placed_students": 3,
+                "placement_rate_pct": 75.0
+            },
+            {
+                "specialisation": "HR Management",
+                "total_students": 6,
+                "placed_students": 3,
+                "placement_rate_pct": 50.0
+            },
+            {
+                "specialisation": "Information Technology",
+                "total_students": 28,
+                "placed_students": 14,
+                "placement_rate_pct": 50.0
+            },
+            {
+                "specialisation": "Mechanical",
+                "total_students": 17,
+                "placed_students": 8,
+                "placement_rate_pct": 47.06
+            },
+            {
+                "specialisation": "Marketing & HR",
+                "total_students": 15,
+                "placed_students": 7,
+                "placement_rate_pct": 46.67
+            },
+            {
+                "specialisation": "Marketing & Finance",
+                "total_students": 22,
+                "placed_students": 9,
+                "placement_rate_pct": 40.91
+            },
+            {
+                "specialisation": "Cloud Computing",
+                "total_students": 18,
+                "placed_students": 7,
+                "placement_rate_pct": 38.89
+            },
+            {
+                "specialisation": "Data Science & AI",
+                "total_students": 31,
+                "placed_students": 12,
+                "placement_rate_pct": 38.71
+            },
+            {
+                "specialisation": "Electronics & Comm",
+                "total_students": 40,
+                "placed_students": 15,
+                "placement_rate_pct": 37.5
+            },
+            {
+                "specialisation": "Enterprise Dev",
+                "total_students": 16,
+                "placed_students": 6,
+                "placement_rate_pct": 37.5
+            },
+            {
+                "specialisation": "Quality Assurance",
+                "total_students": 8,
+                "placed_students": 3,
+                "placement_rate_pct": 37.5
+            },
+            {
+                "specialisation": "Cyber Security",
+                "total_students": 11,
+                "placed_students": 4,
+                "placement_rate_pct": 36.36
+            },
+            {
+                "specialisation": "Computer Science",
+                "total_students": 48,
+                "placed_students": 17,
+                "placement_rate_pct": 35.42
+            },
+            {
+                "specialisation": "Statistics",
+                "total_students": 6,
+                "placed_students": 2,
+                "placement_rate_pct": 33.33
+            },
+            {
+                "specialisation": "Web Analytics",
+                "total_students": 21,
+                "placed_students": 7,
+                "placement_rate_pct": 33.33
+            },
+            {
+                "specialisation": "Finance & Banking",
+                "total_students": 13,
+                "placed_students": 4,
+                "placement_rate_pct": 30.77
+            },
+            {
+                "specialisation": "Civil",
+                "total_students": 23,
+                "placed_students": 7,
+                "placement_rate_pct": 30.43
+            },
+            {
+                "specialisation": "Pharmaceutics",
+                "total_students": 30,
+                "placed_students": 9,
+                "placement_rate_pct": 30.0
+            },
+            {
+                "specialisation": "Business Analytics",
+                "total_students": 21,
+                "placed_students": 6,
+                "placement_rate_pct": 28.57
+            },
+            {
+                "specialisation": "Software Dev",
+                "total_students": 18,
+                "placed_students": 5,
+                "placement_rate_pct": 27.78
+            },
+            {
+                "specialisation": "General Mgmt",
+                "total_students": 11,
+                "placed_students": 3,
+                "placement_rate_pct": 27.27
+            },
+            {
+                "specialisation": "Medicinal Chemistry",
+                "total_students": 15,
+                "placed_students": 4,
+                "placement_rate_pct": 26.67
+            },
+            {
+                "specialisation": "Operations & Systems",
+                "total_students": 27,
+                "placed_students": 7,
+                "placement_rate_pct": 25.93
+            },
+            {
+                "specialisation": "Biotechnology",
+                "total_students": 13,
+                "placed_students": 3,
+                "placement_rate_pct": 23.08
+            },
+            {
+                "specialisation": "Industrial Pharmacy",
+                "total_students": 13,
+                "placed_students": 2,
+                "placement_rate_pct": 15.38
             }
         ]
     },
     "Query 4: Salary Statistics by Specialisation (Placed Only)": {
         "sql": "SELECT \n    specialisation,\n    COUNT(*) AS placed_count,\n    ROUND(AVG(salary), 2) AS avg_salary,\n    MIN(salary) AS min_salary,\n    MAX(salary) AS max_salary\nFROM students\nWHERE status = 'Placed'\nGROUP BY specialisation\nORDER BY avg_salary DESC;",
-        "row_count": 2,
+        "row_count": 25,
         "data": [
             {
-                "specialisation": "Mkt&Fin",
-                "placed_count": 95,
-                "avg_salary": 298852.63,
-                "min_salary": 200000.0,
-                "max_salary": 940000.0
+                "specialisation": "Computer Science",
+                "placed_count": 17,
+                "avg_salary": 733117.65,
+                "min_salary": 558000.0,
+                "max_salary": 883000.0
             },
             {
-                "specialisation": "Mkt&HR",
-                "placed_count": 53,
-                "avg_salary": 270377.36,
-                "min_salary": 200000.0,
-                "max_salary": 450000.0
+                "specialisation": "Electronics & Comm",
+                "placed_count": 15,
+                "avg_salary": 714466.67,
+                "min_salary": 560000.0,
+                "max_salary": 903000.0
+            },
+            {
+                "specialisation": "Enterprise Dev",
+                "placed_count": 6,
+                "avg_salary": 710666.67,
+                "min_salary": 571000.0,
+                "max_salary": 784000.0
+            },
+            {
+                "specialisation": "Data Science & AI",
+                "placed_count": 12,
+                "avg_salary": 697666.67,
+                "min_salary": 568000.0,
+                "max_salary": 908000.0
+            },
+            {
+                "specialisation": "Information Technology",
+                "placed_count": 14,
+                "avg_salary": 679428.57,
+                "min_salary": 575000.0,
+                "max_salary": 798000.0
+            },
+            {
+                "specialisation": "Mechanical",
+                "placed_count": 8,
+                "avg_salary": 674875.0,
+                "min_salary": 480000.0,
+                "max_salary": 826000.0
+            },
+            {
+                "specialisation": "Cloud Computing",
+                "placed_count": 7,
+                "avg_salary": 653571.43,
+                "min_salary": 493000.0,
+                "max_salary": 820000.0
+            },
+            {
+                "specialisation": "Civil",
+                "placed_count": 7,
+                "avg_salary": 651428.57,
+                "min_salary": 535000.0,
+                "max_salary": 746000.0
+            },
+            {
+                "specialisation": "Pharmacology",
+                "placed_count": 3,
+                "avg_salary": 643333.33,
+                "min_salary": 589000.0,
+                "max_salary": 740000.0
+            },
+            {
+                "specialisation": "Medicinal Chemistry",
+                "placed_count": 4,
+                "avg_salary": 626000.0,
+                "min_salary": 571000.0,
+                "max_salary": 687000.0
+            },
+            {
+                "specialisation": "Pharmaceutics",
+                "placed_count": 9,
+                "avg_salary": 613111.11,
+                "min_salary": 457000.0,
+                "max_salary": 821000.0
+            },
+            {
+                "specialisation": "Operations & Systems",
+                "placed_count": 7,
+                "avg_salary": 605714.29,
+                "min_salary": 529000.0,
+                "max_salary": 726000.0
+            },
+            {
+                "specialisation": "Cyber Security",
+                "placed_count": 4,
+                "avg_salary": 584500.0,
+                "min_salary": 484000.0,
+                "max_salary": 633000.0
+            },
+            {
+                "specialisation": "Business Analytics",
+                "placed_count": 6,
+                "avg_salary": 568666.67,
+                "min_salary": 439000.0,
+                "max_salary": 673000.0
+            },
+            {
+                "specialisation": "Marketing & Finance",
+                "placed_count": 9,
+                "avg_salary": 565000.0,
+                "min_salary": 501000.0,
+                "max_salary": 711000.0
+            },
+            {
+                "specialisation": "Marketing & HR",
+                "placed_count": 7,
+                "avg_salary": 546857.14,
+                "min_salary": 434000.0,
+                "max_salary": 638000.0
+            },
+            {
+                "specialisation": "Industrial Pharmacy",
+                "placed_count": 2,
+                "avg_salary": 538500.0,
+                "min_salary": 506000.0,
+                "max_salary": 571000.0
+            },
+            {
+                "specialisation": "Software Dev",
+                "placed_count": 5,
+                "avg_salary": 507000.0,
+                "min_salary": 458000.0,
+                "max_salary": 614000.0
+            },
+            {
+                "specialisation": "Web Analytics",
+                "placed_count": 7,
+                "avg_salary": 502571.43,
+                "min_salary": 336000.0,
+                "max_salary": 589000.0
+            },
+            {
+                "specialisation": "Quality Assurance",
+                "placed_count": 3,
+                "avg_salary": 494666.67,
+                "min_salary": 477000.0,
+                "max_salary": 521000.0
+            },
+            {
+                "specialisation": "General Mgmt",
+                "placed_count": 3,
+                "avg_salary": 453666.67,
+                "min_salary": 261000.0,
+                "max_salary": 550000.0
+            },
+            {
+                "specialisation": "HR Management",
+                "placed_count": 3,
+                "avg_salary": 453333.33,
+                "min_salary": 378000.0,
+                "max_salary": 500000.0
+            },
+            {
+                "specialisation": "Biotechnology",
+                "placed_count": 3,
+                "avg_salary": 453000.0,
+                "min_salary": 401000.0,
+                "max_salary": 500000.0
+            },
+            {
+                "specialisation": "Finance & Banking",
+                "placed_count": 4,
+                "avg_salary": 429500.0,
+                "min_salary": 387000.0,
+                "max_salary": 515000.0
+            },
+            {
+                "specialisation": "Statistics",
+                "placed_count": 2,
+                "avg_salary": 425500.0,
+                "min_salary": 351000.0,
+                "max_salary": 500000.0
             }
         ]
     },
-    "Query 5: Window Function - Rank Students by MBA Percentage within Specialisation": {
-        "sql": "SELECT \n    student_id,\n    gender,\n    specialisation,\n    mba_p,\n    status,\n    salary,\n    RANK() OVER (PARTITION BY specialisation ORDER BY mba_p DESC) AS rank_within_spec\nFROM students\nORDER BY specialisation, rank_within_spec\nLIMIT 15;",
-        "row_count": 15,
+    "Query 5: Window Function - Rank Students by Score within Degree Field": {
+        "sql": "SELECT \n    student_id,\n    gender,\n    degree_t,\n    specialisation,\n    mba_p AS final_score_p,\n    status,\n    salary,\n    RANK() OVER (PARTITION BY degree_t ORDER BY mba_p DESC) AS rank_within_degree\nFROM students\nORDER BY degree_t, rank_within_degree\nLIMIT 20;",
+        "row_count": 20,
         "data": [
             {
-                "student_id": 20,
-                "gender": "M",
-                "specialisation": "Mkt&Fin",
-                "mba_p": 77.89,
-                "status": "Placed",
-                "salary": 236000.0,
-                "rank_within_spec": 1
-            },
-            {
-                "student_id": 86,
+                "student_id": 298,
                 "gender": "F",
-                "specialisation": "Mkt&Fin",
-                "mba_p": 76.18,
-                "status": "Placed",
-                "salary": 400000.0,
-                "rank_within_spec": 2
-            },
-            {
-                "student_id": 168,
-                "gender": "M",
-                "specialisation": "Mkt&Fin",
-                "mba_p": 75.71,
+                "degree_t": "B.Pharm",
+                "specialisation": "Quality Assurance",
+                "final_score_p": 85.27,
                 "status": "Not Placed",
                 "salary": NaN,
-                "rank_within_spec": 3
+                "rank_within_degree": 1
             },
             {
-                "student_id": 166,
-                "gender": "F",
-                "specialisation": "Mkt&Fin",
-                "mba_p": 74.56,
+                "student_id": 268,
+                "gender": "M",
+                "degree_t": "B.Pharm",
+                "specialisation": "Industrial Pharmacy",
+                "final_score_p": 81.62,
                 "status": "Not Placed",
                 "salary": NaN,
-                "rank_within_spec": 4
+                "rank_within_degree": 2
             },
             {
-                "student_id": 211,
+                "student_id": 304,
                 "gender": "M",
-                "specialisation": "Mkt&Fin",
-                "mba_p": 74.49,
-                "status": "Placed",
-                "salary": 400000.0,
-                "rank_within_spec": 5
+                "degree_t": "B.Pharm",
+                "specialisation": "Industrial Pharmacy",
+                "final_score_p": 80.28,
+                "status": "Not Placed",
+                "salary": NaN,
+                "rank_within_degree": 3
             },
             {
-                "student_id": 25,
-                "gender": "M",
-                "specialisation": "Mkt&Fin",
-                "mba_p": 74.01,
-                "status": "Placed",
-                "salary": 360000.0,
-                "rank_within_spec": 6
-            },
-            {
-                "student_id": 126,
+                "student_id": 278,
                 "gender": "F",
-                "specialisation": "Mkt&Fin",
-                "mba_p": 73.33,
-                "status": "Placed",
-                "salary": 350000.0,
-                "rank_within_spec": 7
+                "degree_t": "B.Pharm",
+                "specialisation": "Pharmaceutics",
+                "final_score_p": 77.43,
+                "status": "Not Placed",
+                "salary": NaN,
+                "rank_within_degree": 4
             },
             {
-                "student_id": 34,
-                "gender": "F",
-                "specialisation": "Mkt&Fin",
-                "mba_p": 72.78,
-                "status": "Placed",
-                "salary": 260000.0,
-                "rank_within_spec": 8
-            },
-            {
-                "student_id": 139,
-                "gender": "F",
-                "specialisation": "Mkt&Fin",
-                "mba_p": 71.77,
-                "status": "Placed",
-                "salary": 250000.0,
-                "rank_within_spec": 9
-            },
-            {
-                "student_id": 208,
+                "student_id": 266,
                 "gender": "M",
-                "specialisation": "Mkt&Fin",
-                "mba_p": 71.55,
+                "degree_t": "B.Pharm",
+                "specialisation": "Pharmaceutics",
+                "final_score_p": 77.05,
                 "status": "Placed",
-                "salary": 300000.0,
-                "rank_within_spec": 10
+                "salary": 471000.0,
+                "rank_within_degree": 5
             },
             {
-                "student_id": 123,
+                "student_id": 282,
                 "gender": "F",
-                "specialisation": "Mkt&Fin",
-                "mba_p": 71.0,
-                "status": "Placed",
-                "salary": 236000.0,
-                "rank_within_spec": 11
+                "degree_t": "B.Pharm",
+                "specialisation": "Industrial Pharmacy",
+                "final_score_p": 76.48,
+                "status": "Not Placed",
+                "salary": NaN,
+                "rank_within_degree": 6
             },
             {
-                "student_id": 117,
+                "student_id": 291,
                 "gender": "M",
-                "specialisation": "Mkt&Fin",
-                "mba_p": 70.85,
-                "status": "Placed",
-                "salary": 300000.0,
-                "rank_within_spec": 12
+                "degree_t": "B.Pharm",
+                "specialisation": "Quality Assurance",
+                "final_score_p": 75.93,
+                "status": "Not Placed",
+                "salary": NaN,
+                "rank_within_degree": 7
             },
             {
-                "student_id": 178,
+                "student_id": 267,
+                "gender": "M",
+                "degree_t": "B.Pharm",
+                "specialisation": "Pharmaceutics",
+                "final_score_p": 73.49,
+                "status": "Not Placed",
+                "salary": NaN,
+                "rank_within_degree": 8
+            },
+            {
+                "student_id": 280,
+                "gender": "M",
+                "degree_t": "B.Pharm",
+                "specialisation": "Industrial Pharmacy",
+                "final_score_p": 71.39,
+                "status": "Not Placed",
+                "salary": NaN,
+                "rank_within_degree": 9
+            },
+            {
+                "student_id": 272,
+                "gender": "M",
+                "degree_t": "B.Pharm",
+                "specialisation": "Pharmaceutics",
+                "final_score_p": 71.05,
+                "status": "Not Placed",
+                "salary": NaN,
+                "rank_within_degree": 10
+            },
+            {
+                "student_id": 270,
+                "gender": "M",
+                "degree_t": "B.Pharm",
+                "specialisation": "Industrial Pharmacy",
+                "final_score_p": 70.91,
+                "status": "Not Placed",
+                "salary": NaN,
+                "rank_within_degree": 11
+            },
+            {
+                "student_id": 269,
+                "gender": "M",
+                "degree_t": "B.Pharm",
+                "specialisation": "Pharmaceutics",
+                "final_score_p": 70.82,
+                "status": "Not Placed",
+                "salary": NaN,
+                "rank_within_degree": 12
+            },
+            {
+                "student_id": 276,
+                "gender": "M",
+                "degree_t": "B.Pharm",
+                "specialisation": "Pharmaceutics",
+                "final_score_p": 70.24,
+                "status": "Not Placed",
+                "salary": NaN,
+                "rank_within_degree": 13
+            },
+            {
+                "student_id": 305,
+                "gender": "M",
+                "degree_t": "B.Pharm",
+                "specialisation": "Industrial Pharmacy",
+                "final_score_p": 69.82,
+                "status": "Not Placed",
+                "salary": NaN,
+                "rank_within_degree": 14
+            },
+            {
+                "student_id": 279,
                 "gender": "F",
-                "specialisation": "Mkt&Fin",
-                "mba_p": 70.81,
+                "degree_t": "B.Pharm",
+                "specialisation": "Quality Assurance",
+                "final_score_p": 69.31,
                 "status": "Placed",
-                "salary": 650000.0,
-                "rank_within_spec": 13
+                "salary": 477000.0,
+                "rank_within_degree": 15
             },
             {
-                "student_id": 82,
+                "student_id": 271,
                 "gender": "M",
-                "specialisation": "Mkt&Fin",
-                "mba_p": 70.2,
-                "status": "Placed",
-                "salary": 300000.0,
-                "rank_within_spec": 14
+                "degree_t": "B.Pharm",
+                "specialisation": "Quality Assurance",
+                "final_score_p": 67.85,
+                "status": "Not Placed",
+                "salary": NaN,
+                "rank_within_degree": 16
             },
             {
-                "student_id": 213,
-                "gender": "M",
-                "specialisation": "Mkt&Fin",
-                "mba_p": 69.72,
+                "student_id": 281,
+                "gender": "F",
+                "degree_t": "B.Pharm",
+                "specialisation": "Pharmaceutics",
+                "final_score_p": 67.31,
                 "status": "Placed",
-                "salary": 295000.0,
-                "rank_within_spec": 15
+                "salary": 537000.0,
+                "rank_within_degree": 17
+            },
+            {
+                "student_id": 293,
+                "gender": "F",
+                "degree_t": "B.Pharm",
+                "specialisation": "Quality Assurance",
+                "final_score_p": 66.35,
+                "status": "Not Placed",
+                "salary": NaN,
+                "rank_within_degree": 18
+            },
+            {
+                "student_id": 292,
+                "gender": "F",
+                "degree_t": "B.Pharm",
+                "specialisation": "Pharmaceutics",
+                "final_score_p": 66.14,
+                "status": "Not Placed",
+                "salary": NaN,
+                "rank_within_degree": 19
+            },
+            {
+                "student_id": 286,
+                "gender": "M",
+                "degree_t": "B.Pharm",
+                "specialisation": "Pharmaceutics",
+                "final_score_p": 65.17,
+                "status": "Not Placed",
+                "salary": NaN,
+                "rank_within_degree": 20
             }
         ]
     },
     "Query 6: CTE - Academic Scores Comparison (Placed vs Unplaced)": {
-        "sql": "WITH AcademicAverages AS (\n    SELECT \n        status,\n        COUNT(*) AS student_count,\n        ROUND(AVG(ssc_p), 2) AS avg_ssc_p,\n        ROUND(AVG(hsc_p), 2) AS avg_hsc_p,\n        ROUND(AVG(degree_p), 2) AS avg_degree_p,\n        ROUND(AVG(mba_p), 2) AS avg_mba_p,\n        ROUND(AVG(etest_p), 2) AS avg_etest_p\n    FROM students\n    GROUP BY status\n)\nSELECT \n    status,\n    student_count,\n    avg_ssc_p,\n    avg_hsc_p,\n    avg_degree_p,\n    avg_mba_p,\n    avg_etest_p\nFROM AcademicAverages;",
+        "sql": "WITH AcademicAverages AS (\n    SELECT \n        status,\n        COUNT(*) AS student_count,\n        ROUND(AVG(ssc_p), 2) AS avg_ssc_p,\n        ROUND(AVG(hsc_p), 2) AS avg_hsc_p,\n        ROUND(AVG(degree_p), 2) AS avg_degree_p,\n        ROUND(AVG(mba_p), 2) AS avg_final_p,\n        ROUND(AVG(etest_p), 2) AS avg_etest_p\n    FROM students\n    GROUP BY status\n)\nSELECT \n    status,\n    student_count,\n    avg_ssc_p,\n    avg_hsc_p,\n    avg_degree_p,\n    avg_final_p,\n    avg_etest_p\nFROM AcademicAverages;",
         "row_count": 2,
         "data": [
             {
                 "status": "Not Placed",
-                "student_count": 67,
-                "avg_ssc_p": 57.54,
-                "avg_hsc_p": 58.4,
-                "avg_degree_p": 61.13,
-                "avg_mba_p": 61.61,
-                "avg_etest_p": 69.59
+                "student_count": 308,
+                "avg_ssc_p": 67.82,
+                "avg_hsc_p": 66.59,
+                "avg_degree_p": 65.37,
+                "avg_final_p": 64.89,
+                "avg_etest_p": 67.29
             },
             {
                 "status": "Placed",
-                "student_count": 148,
-                "avg_ssc_p": 71.72,
-                "avg_hsc_p": 69.93,
-                "avg_degree_p": 68.74,
-                "avg_mba_p": 62.58,
-                "avg_etest_p": 73.24
+                "student_count": 167,
+                "avg_ssc_p": 71.45,
+                "avg_hsc_p": 69.36,
+                "avg_degree_p": 68.0,
+                "avg_final_p": 65.06,
+                "avg_etest_p": 71.26
             }
         ]
     },
-    "Query 7: Placement Rate by Work Experience": {
+    "Query 7: Placement Rate by Prior Work Experience": {
         "sql": "SELECT \n    workex,\n    COUNT(*) AS total_students,\n    SUM(Placed_Flag) AS placed_students,\n    ROUND(AVG(Placed_Flag) * 100, 2) AS placement_rate_pct\nFROM students\nGROUP BY workex\nORDER BY placement_rate_pct DESC;",
         "row_count": 2,
         "data": [
             {
                 "workex": "Yes",
-                "total_students": 74,
-                "placed_students": 64,
-                "placement_rate_pct": 86.49
+                "total_students": 182,
+                "placed_students": 120,
+                "placement_rate_pct": 65.93
             },
             {
                 "workex": "No",
-                "total_students": 141,
-                "placed_students": 84,
-                "placement_rate_pct": 59.57
+                "total_students": 293,
+                "placed_students": 47,
+                "placement_rate_pct": 16.04
             }
         ]
     },
-    "Query 8: Top 10 Salary Offers and Student Profiles": {
-        "sql": "SELECT \n    student_id,\n    gender,\n    specialisation,\n    workex,\n    degree_t,\n    ssc_p,\n    hsc_p,\n    degree_p,\n    mba_p,\n    salary\nFROM students\nWHERE status = 'Placed'\nORDER BY salary DESC\nLIMIT 10;",
+    "Query 8: Top 10 Salary Offers Across All Degree Fields": {
+        "sql": "SELECT \n    student_id,\n    gender,\n    degree_t,\n    specialisation,\n    workex,\n    ssc_p,\n    hsc_p,\n    degree_p,\n    mba_p AS final_score_p,\n    salary\nFROM students\nWHERE status = 'Placed'\nORDER BY salary DESC\nLIMIT 10;",
         "row_count": 10,
         "data": [
             {
-                "student_id": 120,
+                "student_id": 158,
                 "gender": "M",
-                "specialisation": "Mkt&Fin",
-                "workex": "Yes",
-                "degree_t": "Comm&Mgmt",
-                "ssc_p": 60.8,
-                "hsc_p": 68.4,
-                "degree_p": 64.6,
-                "mba_p": 64.34,
-                "salary": 940000.0
+                "degree_t": "M.Tech",
+                "specialisation": "Data Science & AI",
+                "workex": "No",
+                "ssc_p": 93.58,
+                "hsc_p": 87.47,
+                "degree_p": 82.98,
+                "final_score_p": 71.62,
+                "salary": 908000.0
             },
             {
-                "student_id": 151,
+                "student_id": 149,
                 "gender": "M",
-                "specialisation": "Mkt&Fin",
+                "degree_t": "M.Tech",
+                "specialisation": "Electronics & Comm",
                 "workex": "Yes",
-                "degree_t": "Sci&Tech",
-                "ssc_p": 71.0,
-                "hsc_p": 58.66,
-                "degree_p": 58.0,
-                "mba_p": 61.3,
-                "salary": 690000.0
+                "ssc_p": 66.83,
+                "hsc_p": 58.41,
+                "degree_p": 62.67,
+                "final_score_p": 64.78,
+                "salary": 903000.0
             },
             {
-                "student_id": 178,
+                "student_id": 122,
+                "gender": "M",
+                "degree_t": "M.Tech",
+                "specialisation": "Data Science & AI",
+                "workex": "Yes",
+                "ssc_p": 76.55,
+                "hsc_p": 77.77,
+                "degree_p": 74.25,
+                "final_score_p": 65.83,
+                "salary": 888000.0
+            },
+            {
+                "student_id": 132,
+                "gender": "M",
+                "degree_t": "M.Tech",
+                "specialisation": "Computer Science",
+                "workex": "Yes",
+                "ssc_p": 85.27,
+                "hsc_p": 56.1,
+                "degree_p": 71.66,
+                "final_score_p": 62.55,
+                "salary": 883000.0
+            },
+            {
+                "student_id": 155,
                 "gender": "F",
-                "specialisation": "Mkt&Fin",
-                "workex": "Yes",
-                "degree_t": "Comm&Mgmt",
-                "ssc_p": 73.0,
-                "hsc_p": 97.0,
-                "degree_p": 79.0,
-                "mba_p": 70.81,
-                "salary": 650000.0
-            },
-            {
-                "student_id": 78,
-                "gender": "M",
-                "specialisation": "Mkt&Fin",
-                "workex": "Yes",
-                "degree_t": "Sci&Tech",
-                "ssc_p": 64.0,
-                "hsc_p": 80.0,
-                "degree_p": 65.0,
-                "mba_p": 57.65,
-                "salary": 500000.0
-            },
-            {
-                "student_id": 164,
-                "gender": "M",
-                "specialisation": "Mkt&Fin",
+                "degree_t": "M.Tech",
+                "specialisation": "Computer Science",
                 "workex": "No",
-                "degree_t": "Sci&Tech",
-                "ssc_p": 63.0,
-                "hsc_p": 67.0,
-                "degree_p": 64.0,
-                "mba_p": 66.46,
-                "salary": 500000.0
+                "ssc_p": 78.78,
+                "hsc_p": 56.14,
+                "degree_p": 79.38,
+                "final_score_p": 66.89,
+                "salary": 874000.0
             },
             {
-                "student_id": 175,
+                "student_id": 165,
                 "gender": "M",
-                "specialisation": "Mkt&Fin",
+                "degree_t": "M.Tech",
+                "specialisation": "Data Science & AI",
                 "workex": "Yes",
-                "degree_t": "Sci&Tech",
-                "ssc_p": 73.24,
-                "hsc_p": 50.83,
-                "degree_p": 64.27,
-                "mba_p": 66.23,
-                "salary": 500000.0
+                "ssc_p": 72.87,
+                "hsc_p": 73.11,
+                "degree_p": 58.46,
+                "final_score_p": 65.64,
+                "salary": 873000.0
             },
             {
-                "student_id": 54,
+                "student_id": 131,
                 "gender": "M",
-                "specialisation": "Mkt&HR",
-                "workex": "No",
-                "degree_t": "Sci&Tech",
-                "ssc_p": 80.0,
-                "hsc_p": 70.0,
-                "degree_p": 72.0,
-                "mba_p": 71.04,
-                "salary": 450000.0
-            },
-            {
-                "student_id": 5,
-                "gender": "M",
-                "specialisation": "Mkt&Fin",
-                "workex": "No",
-                "degree_t": "Comm&Mgmt",
-                "ssc_p": 85.8,
-                "hsc_p": 73.6,
-                "degree_p": 73.3,
-                "mba_p": 55.5,
-                "salary": 425000.0
-            },
-            {
-                "student_id": 96,
-                "gender": "M",
-                "specialisation": "Mkt&Fin",
+                "degree_t": "M.Tech",
+                "specialisation": "Electronics & Comm",
                 "workex": "Yes",
-                "degree_t": "Comm&Mgmt",
-                "ssc_p": 73.0,
-                "hsc_p": 78.0,
-                "degree_p": 65.0,
-                "mba_p": 62.16,
-                "salary": 420000.0
+                "ssc_p": 70.05,
+                "hsc_p": 54.95,
+                "degree_p": 72.6,
+                "final_score_p": 60.77,
+                "salary": 867000.0
             },
             {
-                "student_id": 40,
+                "student_id": 137,
+                "gender": "F",
+                "degree_t": "M.Tech",
+                "specialisation": "Computer Science",
+                "workex": "Yes",
+                "ssc_p": 72.75,
+                "hsc_p": 94.11,
+                "degree_p": 63.3,
+                "final_score_p": 65.51,
+                "salary": 855000.0
+            },
+            {
+                "student_id": 74,
+                "gender": "F",
+                "degree_t": "B.Tech",
+                "specialisation": "Mechanical",
+                "workex": "Yes",
+                "ssc_p": 73.27,
+                "hsc_p": 69.88,
+                "degree_p": 61.87,
+                "final_score_p": 54.76,
+                "salary": 826000.0
+            },
+            {
+                "student_id": 331,
                 "gender": "M",
-                "specialisation": "Mkt&Fin",
-                "workex": "No",
-                "degree_t": "Sci&Tech",
-                "ssc_p": 81.0,
-                "hsc_p": 68.0,
-                "degree_p": 64.0,
-                "mba_p": 62.56,
-                "salary": 411000.0
+                "degree_t": "M.Pharm",
+                "specialisation": "Pharmaceutics",
+                "workex": "Yes",
+                "ssc_p": 55.45,
+                "hsc_p": 84.84,
+                "degree_p": 83.56,
+                "final_score_p": 58.62,
+                "salary": 821000.0
             }
         ]
     },
@@ -387,42 +787,172 @@
         "row_count": 3,
         "data": [
             {
-                "high_school_stream": "Commerce",
-                "total_students": 113,
-                "placed_students": 79,
-                "placement_rate_pct": 69.91
+                "high_school_stream": "Arts",
+                "total_students": 47,
+                "placed_students": 20,
+                "placement_rate_pct": 42.55
             },
             {
                 "high_school_stream": "Science",
-                "total_students": 91,
-                "placed_students": 63,
-                "placement_rate_pct": 69.23
+                "total_students": 331,
+                "placed_students": 116,
+                "placement_rate_pct": 35.05
             },
             {
-                "high_school_stream": "Arts",
-                "total_students": 11,
-                "placed_students": 6,
-                "placement_rate_pct": 54.55
+                "high_school_stream": "Commerce",
+                "total_students": 97,
+                "placed_students": 31,
+                "placement_rate_pct": 31.96
             }
         ]
     },
-    "Query 10: Salary Metrics by Gender (Placed Only)": {
-        "sql": "SELECT \n    gender,\n    COUNT(*) AS placed_count,\n    ROUND(AVG(salary), 2) AS avg_salary,\n    MIN(salary) AS min_salary,\n    MAX(salary) AS max_salary\nFROM students\nWHERE status = 'Placed'\nGROUP BY gender;",
-        "row_count": 2,
+    "Query 10: Salary Metrics by Degree Field and Gender (Placed Only)": {
+        "sql": "SELECT \n    degree_t,\n    gender,\n    COUNT(*) AS placed_count,\n    ROUND(AVG(salary), 2) AS avg_salary,\n    MIN(salary) AS min_salary,\n    MAX(salary) AS max_salary\nFROM students\nWHERE status = 'Placed'\nGROUP BY degree_t, gender\nORDER BY degree_t, gender;",
+        "row_count": 18,
         "data": [
             {
+                "degree_t": "B.Pharm",
                 "gender": "F",
-                "placed_count": 48,
-                "avg_salary": 267291.67,
-                "min_salary": 200000.0,
-                "max_salary": 650000.0
+                "placed_count": 4,
+                "avg_salary": 503250.0,
+                "min_salary": 477000.0,
+                "max_salary": 537000.0
             },
             {
+                "degree_t": "B.Pharm",
                 "gender": "M",
-                "placed_count": 100,
-                "avg_salary": 298910.0,
-                "min_salary": 200000.0,
-                "max_salary": 940000.0
+                "placed_count": 5,
+                "avg_salary": 501200.0,
+                "min_salary": 457000.0,
+                "max_salary": 571000.0
+            },
+            {
+                "degree_t": "B.Sc",
+                "gender": "F",
+                "placed_count": 2,
+                "avg_salary": 425500.0,
+                "min_salary": 351000.0,
+                "max_salary": 500000.0
+            },
+            {
+                "degree_t": "B.Sc",
+                "gender": "M",
+                "placed_count": 3,
+                "avg_salary": 453000.0,
+                "min_salary": 401000.0,
+                "max_salary": 500000.0
+            },
+            {
+                "degree_t": "B.Tech",
+                "gender": "F",
+                "placed_count": 19,
+                "avg_salary": 659947.37,
+                "min_salary": 535000.0,
+                "max_salary": 826000.0
+            },
+            {
+                "degree_t": "B.Tech",
+                "gender": "M",
+                "placed_count": 34,
+                "avg_salary": 692117.65,
+                "min_salary": 480000.0,
+                "max_salary": 816000.0
+            },
+            {
+                "degree_t": "BBA",
+                "gender": "F",
+                "placed_count": 2,
+                "avg_salary": 487000.0,
+                "min_salary": 424000.0,
+                "max_salary": 550000.0
+            },
+            {
+                "degree_t": "BBA",
+                "gender": "M",
+                "placed_count": 8,
+                "avg_salary": 433125.0,
+                "min_salary": 261000.0,
+                "max_salary": 550000.0
+            },
+            {
+                "degree_t": "BCA",
+                "gender": "F",
+                "placed_count": 7,
+                "avg_salary": 510285.71,
+                "min_salary": 336000.0,
+                "max_salary": 594000.0
+            },
+            {
+                "degree_t": "BCA",
+                "gender": "M",
+                "placed_count": 9,
+                "avg_salary": 535444.44,
+                "min_salary": 374000.0,
+                "max_salary": 633000.0
+            },
+            {
+                "degree_t": "M.Pharm",
+                "gender": "F",
+                "placed_count": 5,
+                "avg_salary": 636000.0,
+                "min_salary": 571000.0,
+                "max_salary": 690000.0
+            },
+            {
+                "degree_t": "M.Pharm",
+                "gender": "M",
+                "placed_count": 7,
+                "avg_salary": 687714.29,
+                "min_salary": 589000.0,
+                "max_salary": 821000.0
+            },
+            {
+                "degree_t": "M.Tech",
+                "gender": "F",
+                "placed_count": 3,
+                "avg_salary": 837000.0,
+                "min_salary": 782000.0,
+                "max_salary": 874000.0
+            },
+            {
+                "degree_t": "M.Tech",
+                "gender": "M",
+                "placed_count": 9,
+                "avg_salary": 823777.78,
+                "min_salary": 609000.0,
+                "max_salary": 908000.0
+            },
+            {
+                "degree_t": "MBA",
+                "gender": "F",
+                "placed_count": 11,
+                "avg_salary": 557181.82,
+                "min_salary": 434000.0,
+                "max_salary": 638000.0
+            },
+            {
+                "degree_t": "MBA",
+                "gender": "M",
+                "placed_count": 18,
+                "avg_salary": 579777.78,
+                "min_salary": 439000.0,
+                "max_salary": 726000.0
+            },
+            {
+                "degree_t": "MCA",
+                "gender": "F",
+                "placed_count": 9,
+                "avg_salary": 692888.89,
+                "min_salary": 620000.0,
+                "max_salary": 820000.0
+            },
+            {
+                "degree_t": "MCA",
+                "gender": "M",
+                "placed_count": 12,
+                "avg_salary": 635833.33,
+                "min_salary": 493000.0,
+                "max_salary": 784000.0
             }
         ]
     }

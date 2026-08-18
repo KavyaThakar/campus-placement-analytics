@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Campus Placement Analytics Dashboard</title>
+    <title>Multi-Degree Campus Placement Analytics Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -67,10 +67,10 @@
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-2" href="#">
                 <i class="fa-solid fa-graduation-cap text-info fs-3"></i>
-                <span>Campus Placement Analytics</span>
+                <span>Multi-Degree Campus Placement Analytics</span>
             </a>
             <span class="navbar-text text-light opacity-75 d-none d-md-inline">
-                Data Science Portfolio Project | 215 Student Records
+                Cross-Disciplinary Portfolio Project | 475 Student Records
             </span>
         </div>
     </nav>
@@ -82,19 +82,22 @@
         <div class="p-4 mb-4 bg-white rounded-3 border shadow-sm">
             <div class="row align-items-center">
                 <div class="col-lg-8">
-                    <h1 class="display-6 fw-bold text-dark mb-2">Campus Recruitment Drivers & Analysis</h1>
+                    <h1 class="display-6 fw-bold text-dark mb-2">Cross-Disciplinary Recruitment Drivers & Analysis</h1>
                     <p class="lead text-muted mb-3">
-                        An end-to-end analytical study uncovering key factors influencing MBA placement rates, salary packages, work experience leverage, and academic score impacts using SQLite and Python analytics.
+                        An end-to-end analytical study uncovering key recruitment factors influencing placement rates, salary packages, work experience leverage, and academic score impacts across <strong>B.Tech, M.Tech, MCA, BCA, Pharmacy, MBA, BBA, B.Sc</strong> using SQLite and Python analytics.
                     </p>
                     <div class="d-flex flex-wrap gap-2">
-                        <span class="badge bg-primary badge-custom"><i class="fa-brands fa-python me-1"></i> Python 3.10</span>
+                        <span class="badge bg-primary badge-custom"><i class="fa-brands fa-python me-1"></i> Python 3.10 / 3.13</span>
                         <span class="badge bg-secondary badge-custom"><i class="fa-solid fa-database me-1"></i> SQLite3</span>
-                        <span class="badge bg-success badge-custom"><i class="fa-solid fa-chart-line me-1"></i> Visual Analytics</span>
-                        <span class="badge bg-dark badge-custom"><i class="fa-brands fa-github me-1"></i> GitHub Repository</span>
+                        <span class="badge bg-success badge-custom"><i class="fa-solid fa-chart-line me-1"></i> Streamlit App</span>
+                        <span class="badge bg-warning text-dark badge-custom"><i class="fa-solid fa-rocket me-1"></i> Hugging Face Space</span>
                     </div>
                 </div>
-                <div class="col-lg-4 text-center mt-3 mt-lg-0">
-                    <a href="https://github.com/KavyaThakar/campus-placement-analytics" target="_blank" class="btn btn-outline-dark btn-lg w-100">
+                <div class="col-lg-4 text-center mt-3 mt-lg-0 d-flex flex-column gap-2">
+                    <a href="https://huggingface.co/spaces/KavyaThakar/campus-placement-analytics" target="_blank" class="btn btn-primary btn-lg w-100">
+                        <i class="fa-solid fa-rocket me-2"></i> Live Hugging Face App
+                    </a>
+                    <a href="https://github.com/KavyaThakar/campus-placement-analytics" target="_blank" class="btn btn-outline-dark btn-md w-100">
                         <i class="fa-brands fa-github me-2"></i> View Source Code
                     </a>
                 </div>
@@ -109,8 +112,8 @@
                         <i class="fa-solid fa-users"></i>
                     </div>
                     <div class="text-muted small fw-semibold">TOTAL CANDIDATES</div>
-                    <div class="fs-2 fw-bold text-dark">215</div>
-                    <div class="small text-muted">148 Placed | 67 Unplaced</div>
+                    <div class="fs-2 fw-bold text-dark">475</div>
+                    <div class="small text-muted">B.Tech, M.Tech, MCA, BCA, Pharmacy, MBA</div>
                 </div>
             </div>
             <div class="col-md-3">
@@ -119,8 +122,8 @@
                         <i class="fa-solid fa-chart-pie"></i>
                     </div>
                     <div class="text-muted small fw-semibold">PLACEMENT RATE</div>
-                    <div class="fs-2 fw-bold text-success">68.84%</div>
-                    <div class="small text-muted">Overall Campus Average</div>
+                    <div class="fs-2 fw-bold text-success">35.16%</div>
+                    <div class="small text-muted">Overall Multi-Disciplinary Rate</div>
                 </div>
             </div>
             <div class="col-md-3">
@@ -129,8 +132,8 @@
                         <i class="fa-solid fa-indian-rupee-sign"></i>
                     </div>
                     <div class="text-muted small fw-semibold">AVG SALARY OFFER</div>
-                    <div class="fs-2 fw-bold text-info">₹2.91L</div>
-                    <div class="small text-muted">₹2,91,015 INR / year</div>
+                    <div class="fs-2 fw-bold text-info">₹6.35L</div>
+                    <div class="small text-muted">Across Placed Graduates</div>
                 </div>
             </div>
             <div class="col-md-3">
@@ -139,8 +142,8 @@
                         <i class="fa-solid fa-trophy"></i>
                     </div>
                     <div class="text-muted small fw-semibold">HIGHEST OFFER</div>
-                    <div class="fs-2 fw-bold text-warning">₹9.40L</div>
-                    <div class="small text-muted">Mkt&Fin | Workex Yes</div>
+                    <div class="fs-2 fw-bold text-warning">₹9.08L</div>
+                    <div class="small text-muted">M.Tech Data Science & AI</div>
                 </div>
             </div>
         </div>
@@ -151,10 +154,10 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="chart-card">
-                    <h5 class="fw-bold mb-3">Key Academic Stage Scores (Placed vs Unplaced)</h5>
-                    <img src="charts/academic_scores_placed_vs_unplaced.png" alt="Academic Score Comparison" class="chart-img shadow-sm">
+                    <h5 class="fw-bold mb-3">Placement Rate by Degree Field</h5>
+                    <img src="charts/placement_rate_by_degree.png" alt="Placement Rate by Degree Field" class="chart-img shadow-sm">
                     <p class="text-muted small mt-2">
-                        <strong>Insight:</strong> 10th (`ssc_p`) and 12th (`hsc_p`) scores show a massive +14.2% and +11.5% gap between placed vs unplaced candidates, whereas MBA score (`mba_p`) shows only a +1.0% difference.
+                        <strong>Insight:</strong> M.Tech, MCA, M.Pharm, and B.Tech candidates lead recruitment rates, demonstrating high demand for postgraduate and engineering specializations.
                     </p>
                 </div>
             </div>
@@ -163,7 +166,7 @@
                     <h5 class="fw-bold mb-3">Placement Rate by Prior Work Experience</h5>
                     <img src="charts/placement_rate_by_workex.png" alt="Placement Rate by Work Experience" class="chart-img shadow-sm">
                     <p class="text-muted small mt-2">
-                        <strong>Insight:</strong> Prior work experience boosts placement rates from 59.57% to 86.49% (+26.9 percentage points higher probability).
+                        <strong>Insight:</strong> Prior work experience/internships boost placement probability from 16.0% to 65.9% (+49.9 percentage points higher recruitment odds).
                     </p>
                 </div>
             </div>
@@ -172,19 +175,19 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="chart-card">
-                    <h5 class="fw-bold mb-3">Placement Rate by MBA Specialisation</h5>
+                    <h5 class="fw-bold mb-3">Placement Rate by Branch & Specialisation</h5>
                     <img src="charts/placement_rate_by_specialisation.png" alt="Placement Rate by Specialisation" class="chart-img shadow-sm">
                     <p class="text-muted small mt-2">
-                        <strong>Insight:</strong> Marketing & Finance candidates achieved a 79.17% placement rate vs 55.79% for Marketing & HR (+23.4% placement rate advantage).
+                        <strong>Insight:</strong> Computer Science, Data Science & AI, Pharmaceutics, and Marketing & Finance show top placement performance.
                     </p>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="chart-card">
-                    <h5 class="fw-bold mb-3">Salary Offer Distribution (Placed Students)</h5>
+                    <h5 class="fw-bold mb-3">Salary Package Distribution across All Placed Graduates</h5>
                     <img src="charts/salary_distribution_placed.png" alt="Salary Offer Distribution" class="chart-img shadow-sm">
                     <p class="text-muted small mt-2">
-                        <strong>Insight:</strong> Salary offers cluster between ₹2.0L and ₹3.0L, with a right-skewed tail reaching ₹9.4L for top candidates.
+                        <strong>Insight:</strong> Salary packages span from ₹2.6L up to ₹9.08L+, with engineering and MCA streams commanding premium bands.
                     </p>
                 </div>
             </div>
@@ -193,7 +196,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="chart-card">
-                    <h5 class="fw-bold mb-3">Average Salary Offer by Specialisation & Gender</h5>
+                    <h5 class="fw-bold mb-3">Average Salary Offer by Degree Field & Gender</h5>
                     <img src="charts/avg_salary_by_spec_gender.png" alt="Average Salary Offer by Specialisation & Gender" class="chart-img shadow-sm">
                 </div>
             </div>
@@ -207,11 +210,11 @@
 
         <!-- Executive Summary Findings -->
         <div class="card border-0 bg-primary text-white p-4 my-4 shadow-sm rounded-3">
-            <h4 class="fw-bold"><i class="fa-solid fa-lightbulb text-warning me-2"></i> Top 3 Recruitment Key Findings</h4>
+            <h4 class="fw-bold"><i class="fa-solid fa-lightbulb text-warning me-2"></i> Cross-Disciplinary Recruitment Findings</h4>
             <ul class="mb-0 fs-6 mt-2 lh-lg">
-                <li><strong>Work Experience is Paramount:</strong> Having prior work experience increases recruitment odds by +26.9 percentage points (86.5% vs 59.6%).</li>
-                <li><strong>Consistent High School Performance Trumps MBA Scores:</strong> Recruiters prioritize candidates with strong secondary education history over MBA GPA alone.</li>
-                <li><strong>Specialisation Premium:</strong> Marketing & Finance delivers higher placement rates (79.2% vs 55.8%) and higher average packages (₹2.98L vs ₹2.70L).</li>
+                <li><strong>Technical & Master's Premium:</strong> M.Tech, MCA, and B.Tech candidates command the highest average salary packages (up to ₹9.08L).</li>
+                <li><strong>Work Experience & Internships are Decisive:</strong> Industry experience increases recruitment probability by +49.9 percentage points across all streams.</li>
+                <li><strong>Academic Consistency:</strong> Recruiters prioritize candidates with consistent 10th (`ssc_p`) and 12th (`hsc_p`) performance along with aptitude scores (`etest_p`).</li>
             </ul>
         </div>
 
@@ -219,7 +222,7 @@
 
     <footer class="bg-dark text-light py-3 mt-5 text-center">
         <div class="container small opacity-75">
-            Campus Placement Analytics Project | Built by Kavya Thakar | Hosted on GitHub & Hugging Face
+            Multi-Degree Campus Placement Analytics Project | Built by Kavya Thakar | Hosted on GitHub & Hugging Face
         </div>
     </footer>
 

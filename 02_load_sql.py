@@ -31,9 +31,11 @@ def load_sql():
     df.to_sql(name=table_name, con=conn, if_exists='replace', index=False)
     print(f"Loaded {len(df)} records into table '{table_name}'.")
     
-    # 4. Create Index on 'status' Column
-    print("Creating index on 'status' column for performance...")
+    # 4. Create Indices on 'status', 'degree_t', 'specialisation' Columns
+    print("Creating indices on 'status', 'degree_t', and 'specialisation' columns...")
     cursor.execute(f"CREATE INDEX IF NOT EXISTS idx_status ON {table_name}(status);")
+    cursor.execute(f"CREATE INDEX IF NOT EXISTS idx_degree ON {table_name}(degree_t);")
+    cursor.execute(f"CREATE INDEX IF NOT EXISTS idx_spec ON {table_name}(specialisation);")
     conn.commit()
     
     # 5. Verify Table and Index
