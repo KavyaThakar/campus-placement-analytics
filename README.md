@@ -8,8 +8,11 @@ sdk_version: "1.32.0"
 app_file: app.py
 pinned: false
 ---
+## 🚀 Live Demo
 
-# Multi-Degree Campus Placement Analytics & Driver Analysis
+> Explore the live version of the project:
+
+**[🌐 Open Live Project](https://effervescent-pithivier-75378a.netlify.app/)**
 
 [![Python 3.8+](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
 [![SQLite3](https://img.shields.io/badge/Database-SQLite3-lightgrey.svg)](https://www.sqlite.org/)
